@@ -1,6 +1,7 @@
 ---
 - name: Playbook to build and run Docker
   hosts: all
+  remote_user: maha
   become: true
   gather_facts: false
 
