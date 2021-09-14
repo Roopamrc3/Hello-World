@@ -1,15 +1,9 @@
-FROM ubuntu:20.04
-RUN apt-get update
-RUN mkdir /opt/tomcat
-WORKDIR /opt/tomcat
-RUN apt install curl -y
-RUN curl -O http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-RUN tar -xzvf apache*.tar.gz
-RUN apt-get install openjdk-8-jdk -y
-RUN java -version
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/.
-COPY /var/lib/jenkins/workspace/Jenkins_To_Docker_Using_Ansible/webapp/target/webapp.war /opt/tomcat/webapps
-WORKDIR /opt/tomcat/webapps
-EXPOSE 8080
-CMD ["/opt/tomcat/bin/catalina.sh","run"]
+# Pull base image 
+From tomcat:8-jre8 
+
+# Maintainer 
+MAINTAINER "roopamrulz@gmail.com" 
+COPY /var/lib/jenkins/workspace/devops_project/webapp/target /opt/apache-tomcat-8.5.70/webapps
+
+
 
